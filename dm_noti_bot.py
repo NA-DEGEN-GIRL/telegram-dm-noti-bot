@@ -151,7 +151,7 @@ async def process_task():
                         chat_info = await get_chat_info(chat_id)
                         unread_count = chat_info.get('unread_count')
                         if unread_count == 0:
-                            msg_queue.task_done()
+                            #msg_queue.task_done()
                             continue
                         tg_handle = user_info.get('usernames', {}).get('active_usernames', [None])[0]
                         tg_name = (user_info.get('first_name', '').strip() + ' ' + user_info.get('last_name', '').strip()).strip()
