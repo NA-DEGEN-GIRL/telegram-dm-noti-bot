@@ -1,0 +1,47 @@
+nohup: ignoring input
+[1;36m[ 3][t 0][1744866748.501627922][Client.cpp:599]	Create client 1[0m
+[1;36m[ 3][t 0][1744866748.501750230][Client.cpp:383]	Initialize client 1[0m
+[1;36m[ 3][t 4][1744866748.502663135][Td.cpp:138][#1][!MultiTd]	Create Td with layer 200, database version 14 and version 54 on 4 threads[0m
+[1;36m[ 3][t 0][1744866748.502679109][Client.cpp:280][&td_requests]	Begin to wait for updates with timeout 0.010000[0m
+[1;36m[ 3][t 4][1744866748.502768278][Td.cpp:1346][#1][!Td][&td_requests]	Sending update: updateOption {
+  name = "version"
+  value = optionValueString {
+    value = "1.8.46"
+  }
+}[0m
+[1;36m[ 3][t 4][1744866748.502834081][Td.cpp:1346][#1][!Td][&td_requests]	Sending update: updateOption {
+  name = "commit_hash"
+  value = optionValueString {
+    value = "b498497bbfd6b80c86f800b3546a0170206317d3"
+  }
+}[0m
+[1;36m[ 3][t 4][1744866748.502847194][Td.cpp:1353][#1][!Td][&td_requests]	Sending update: updateAuthorizationState {
+  authorization_state = authorizationStateWaitTdlibParameters {
+  }
+}[0m
+[1;36m[ 3][t 4][1744866748.502866029][Td.cpp:280][#1][!Td][&td_requests]	Receive request 1: setLogVerbosityLevel {
+  new_verbosity_level = 1
+}[0m
+2025-04-17 05:12:38,844 [INFO]: Authorization complete.
+2025-04-17 05:12:38,844 [INFO]: Authorization complete.
+2025-04-17 05:12:57,435 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:12:57,435 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:12:58,535 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:12:58,535 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:12:59,641 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:12:59,641 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:13:00,725 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:13:00,725 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:13:01,726 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:13:01,726 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:13:02,737 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:13:02,737 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+[1;31m[ 1][t 4][1744866783.651883125][MessagesManager.cpp:12252][#1][!Td]	Failed to repair server unread count in chat -1002018029558, because receive read_inbox_max_message_id = server message 283256 after server message 283256, but messages are read up to server message 292489[0m
+2025-04-17 05:13:03,919 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:13:03,919 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:13:04,929 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:13:04,929 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:13:05,888 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:13:05,888 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:13:06,996 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
+2025-04-17 05:13:06,996 [INFO]: HTTP Request: POST https://api.telegram.org/bot7729863537:AAEfYXwEPc2J28JzZPISdiZQZBtlT-Aesh4/sendMessage "HTTP/1.1 200 OK"
