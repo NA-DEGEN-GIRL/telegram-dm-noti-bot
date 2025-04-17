@@ -147,7 +147,7 @@ async def process_task():
                     user_info = await get_user_info(sender_id)
                     if user_info.get('type').get('@type') != 'userTypeBot' and user_info.get('id') != TG_KEY.admin_id:
                         # main에서 느리게 처리하던 구간도 큐 분리로 안전
-                        await asyncio.sleep(0.5)
+                        await asyncio.sleep(0.1)
                         chat_info = await get_chat_info(chat_id)
                         unread_count = chat_info.get('unread_count')
                         if unread_count == 0:
