@@ -3,3 +3,4 @@ __pycache__/
 key_tg.py
 tdlib/
 .venv
+*.log
