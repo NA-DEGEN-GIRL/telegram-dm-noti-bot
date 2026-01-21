@@ -6,16 +6,27 @@ from key_tg import TG_KEY
 import os
 import uuid
 import logging
+from logging.handlers import RotatingFileHandler  # 추가: 로그 파일 크기 제한용
 
-# 로깅 설정: 콘솔과 파일 모두에 출력
-logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s]: %(message)s')
-file_handler = logging.FileHandler('dm_noti_bot.log')
+# 로깅 설정: 콘솔과 파일 모두에 출력 (중복 방지)
+logger = logging.getLogger('dm_noti_bot')  # 수정: 고유 이름 사용하여 중복 방지
+logger.setLevel(logging.INFO)
+logger.propagate = False  # 수정: 상위 로거로 전파 방지 (중복 출력 해결)
+
+# 수정: RotatingFileHandler 사용 - 최대 5MB, 백업 파일 3개 유지
+file_handler = RotatingFileHandler(
+    'dm_noti_bot.log',
+    maxBytes=5*1024*1024,  # 5MB
+    backupCount=3,         # 백업 파일 3개 (dm_noti_bot.log.1, .2, .3)
+    encoding='utf-8'
+)
 file_handler.setLevel(logging.INFO)
 file_handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s]: %(message)s'))
+
 stream_handler = logging.StreamHandler()
 stream_handler.setLevel(logging.INFO)
 stream_handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s]: %(message)s'))
-logger = logging.getLogger()
+
 logger.addHandler(file_handler)
 logger.addHandler(stream_handler)
 
@@ -34,6 +45,25 @@ tdjson_receive.argtypes = [ctypes.c_void_p, ctypes.c_double]
 tdjson_receive.restype = ctypes.c_char_p
 tdjson_destroy = td_json.td_json_client_destroy
 tdjson_destroy.argtypes = [ctypes.c_void_p]
+
+# ★ 클라이언트 생성 전에 TDLib 전역 로그 설정 (동기 함수 사용)
+# td_execute: 클라이언트 없이 동기적으로 실행되는 TDLib 함수
+td_execute = td_json.td_execute
+td_execute.argtypes = [ctypes.c_char_p]
+td_execute.restype = ctypes.c_char_p
+
+# 로그 레벨 0으로 설정 (치명적 오류만)
+td_execute(json.dumps({'@type': 'setLogVerbosityLevel', 'new_verbosity_level': 0}).encode('utf-8'))
+# 로그를 파일로 리다이렉트 (콘솔 출력 방지)
+td_execute(json.dumps({
+    '@type': 'setLogStream',
+    'log_stream': {
+        '@type': 'logStreamFile',
+        'path': 'tdlib_internal.log',
+        'max_file_size': 1048576  # 1MB
+    }
+}).encode('utf-8'))
+
 client = tdjson_create()
 
 msg_queue = asyncio.Queue(maxsize=2000)  # 모든 이벤트가 들어갈 큐
@@ -57,8 +87,7 @@ async def td_receive():
         logger.error(f"Error receiving data: {e}")
     return None
 
-async def set_log_verbosity_level(level):
-    await td_send_async({'@type': 'setLogVerbosityLevel', 'new_verbosity_level': level})
+
 
 async def get_chat_info(chat_id):
     try:
@@ -159,7 +188,7 @@ async def process_task():
                         content = message.get('content', {})
                         if content.get('@type') == "messageText":
                             text = content['text']['text']
-                            msg_text = f"{display_name}:\n{text[:50]}"
+                            msg_text = f"{display_name}:\n{text}"
                             await send_alert_message(msg_text)
         except Exception as e:
             logger.error(f"Error processing message: {e}")
@@ -169,7 +198,6 @@ async def process_task():
 
 async def main():
     try:
-        await set_log_verbosity_level(1)
         await start_tdlib_user_account()
         # receive_task(), process_task()를 동시에 실행
         await asyncio.gather(

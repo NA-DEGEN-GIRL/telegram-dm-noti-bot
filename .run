@@ -1,0 +1,1 @@
+nohup python -u dm_noti_bot.py --dm_noti_bot > dm_noti_bot.log 2>&1 &
