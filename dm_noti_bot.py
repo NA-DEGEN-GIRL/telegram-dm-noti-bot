@@ -118,7 +118,7 @@ async def start_tdlib_user_account():
             'use_test_dc': False,
             'database_directory': 'tdlib',
             'use_file_database': False,
-            'use_chat_info_database': True,
+            'use_chat_info_database': False,
             'use_message_database': False,
             'use_secret_chats': False,
             'api_id': int(TG_KEY.api_id),
